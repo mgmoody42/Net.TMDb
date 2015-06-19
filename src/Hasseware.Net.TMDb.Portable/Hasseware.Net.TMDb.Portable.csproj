@@ -53,6 +53,9 @@
     <Compile Include="..\Hasseware.Net.TMDb\IMovieInfo.cs">
       <Link>IMovieInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Hasseware.Net.TMDb\Internal\ResourceCreationConverter.cs">
+      <Link>ResourceCreationConverter.cs</Link>
+    </Compile>
     <Compile Include="..\Hasseware.Net.TMDb\ServiceClient.cs">
       <Link>ServiceClient.cs</Link>
     </Compile>
