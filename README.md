@@ -3,6 +3,7 @@
 Implements asynchronous operations and includes support for portable class libraries.
 
 ## Available on NuGet Gallery
+<<<<<<< HEAD
 
 To install the [Hassware.TheMovieDB](https://www.nuget.org/packages/Hasseware.TheMovieDB) package,
 run the following command in the [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)
@@ -13,34 +14,47 @@ run the following command in the [Package Manager Console](http://docs.nuget.org
 
     var client = new ServiceClient("<ApiKey>");
     var movies = await client.Movies.GetTopRatedAsync(null, 1, cancellationToken);
+=======
+>>>>>>> miguelhasse/master
 
-	foreach (Movie m in movies.Results)
+To install the [Hasseware.TheMovieDB](https://www.nuget.org/packages/Hasseware.TheMovieDB) package,
+run the following command in the [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)
+
+    PM> Install-Package Hasseware.TheMovieDB
+    
+### Usage samples ###
+
+	static async Task Sample(CancellationToken cancellationToken)
 	{
-		var movie = await client.Movies.GetAsync(m.Id, null, true, cancellationToken);
-
-		foreach (MediaCast c in movie.Credits.Cast)
+	    using (var client = new ServiceClient("<ApiKey>"))
 		{
-			var person = await client.People.GetAsync(c.Id, true, cancellationToken);
-
-			foreach (Image img in person.Images.Results)
+			for (int i = 1, count = 1000; i <= count; i++)
 			{
-				string filepath = Path.Combine("People", img.FilePath.TrimStart('/'));
-				await DownloadImage(img.FilePath, filepath, cancellationToken);
-			}
-		}
-		foreach (MediaCrew c in movie.Credits.Crew)
-		{
-			var person = await client.People.GetAsync(c.Id, true, cancellationToken);
-
-			foreach (Image img in person.Images.Results)
-			{
-				string filepath = Path.Combine("People", img.FilePath.TrimStart('/'));
-				await DownloadImage(img.FilePath, filepath, cancellationToken);
+			    var movies = await client.Movies.GetTopRatedAsync(null, i, cancellationToken);
+				count = movies.PageCount; // keep track of the actual page count
+			
+				foreach (Movie m in movies.Results)
+				{
+					var movie = await client.Movies.GetAsync(m.Id, null, true, cancellationToken);
+			
+					var personIds = movie.Credits.Cast.Select(s => s.Id)
+						.Union(movie.Credits.Crew.Select(s => s.Id));
+			
+					foreach (var id in personIds)
+					{
+						var person = await client.People.GetAsync(id, true, cancellationToken);
+			
+						foreach (var img in person.Images.Results)
+						{
+							string filepath = Path.Combine("People", img.FilePath.TrimStart('/'));
+							await DownloadImage(img.FilePath, filepath, cancellationToken);
+						}
+					}
+				}
 			}
 		}
 	}
 
-----------
     static async Task DownloadImage(string filename, string localpath, CancellationToken cancellationToken)
     {
         if (!File.Exists(localpath))

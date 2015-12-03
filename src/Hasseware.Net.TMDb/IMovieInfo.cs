@@ -16,7 +16,11 @@ namespace System.Net.TMDb
 		/// <summary>
 		/// Search for movies by title.
 		/// </summary>
+<<<<<<< HEAD
         Task<Movies> SearchAsync(string query, string language, bool includeAdult, int? year, int page, CancellationToken cancellationToken);
+=======
+        Task<Movies> SearchAsync(string query, string language, bool includeAdult, int? year, bool autocomplete, int page, CancellationToken cancellationToken);
+>>>>>>> miguelhasse/master
 
 		/// <summary>
 		/// Discover movies by different types of data like average rating, number of votes, genres and certifications. You can get a valid list of certifications from the /certifications method.
@@ -139,7 +143,11 @@ namespace System.Net.TMDb
 		/// <summary>
 		/// Search for TV shows by title.
 		/// </summary>
+<<<<<<< HEAD
 		Task<Shows> SearchAsync(string query, string language, DateTime? firstAirDate, int page, CancellationToken cancellationToken);
+=======
+		Task<Shows> SearchAsync(string query, string language, DateTime? firstAirDate, bool autocomplete, int page, CancellationToken cancellationToken);
+>>>>>>> miguelhasse/master
 
 		/// <summary>
 		/// Discover TV shows by different types of data like average rating, number of votes, genres, the network they aired on and air dates.
@@ -322,7 +330,11 @@ namespace System.Net.TMDb
 		/// <summary>
 		/// Search for people by name.
 		/// </summary>
+<<<<<<< HEAD
 		Task<People> SearchAsync(string query, bool includeAdult, int page, CancellationToken cancellationToken);
+=======
+		Task<People> SearchAsync(string query, bool includeAdult, bool autocomplete, int page, CancellationToken cancellationToken);
+>>>>>>> miguelhasse/master
 
 		/// <summary>
 		/// Get the movie credits for a specific person id.

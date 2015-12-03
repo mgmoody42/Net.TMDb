@@ -308,7 +308,11 @@ namespace System.Net.TMDb
 				this.client = client;
 			}
 
+<<<<<<< HEAD
             public async Task<Movies> SearchAsync(string query, string language, bool includeAdult, int? year, int page, CancellationToken cancellationToken)
+=======
+            public async Task<Movies> SearchAsync(string query, string language, bool includeAdult, int? year, bool autocomplete, int page, CancellationToken cancellationToken)
+>>>>>>> miguelhasse/master
 			{
 				var parameters = new Dictionary<string, object>
 				{
@@ -318,6 +322,7 @@ namespace System.Net.TMDb
 					{ "language", language },
                     { "year", year }
 				};
+				if (autocomplete) parameters.Add("search_type", "ngram");
 				var response = await client.GetAsync("search/movie", parameters, cancellationToken).ConfigureAwait(false);
 				return await Deserialize<Movies>(response);
 			}
@@ -538,7 +543,11 @@ namespace System.Net.TMDb
 				this.client = client;
 			}
 
+<<<<<<< HEAD
 			public async Task<Shows> SearchAsync(string query, string language, DateTime? firstAirDate, int page, CancellationToken cancellationToken)
+=======
+			public async Task<Shows> SearchAsync(string query, string language, DateTime? firstAirDate, bool autocomplete, int page, CancellationToken cancellationToken)
+>>>>>>> miguelhasse/master
 			{
 				var parameters = new Dictionary<string, object>
 				{
@@ -547,6 +556,7 @@ namespace System.Net.TMDb
 					{ "language", language },
 					{ "first_air_date_year", firstAirDate }
 				};
+				if (autocomplete) parameters.Add("search_type", "ngram");
 				var response = await client.GetAsync("search/tv", parameters, cancellationToken).ConfigureAwait(false);
 				return await Deserialize<Shows>(response);
 			}
@@ -940,9 +950,17 @@ namespace System.Net.TMDb
 				return await Deserialize<ExternalIds>(response);
 			}
 
+<<<<<<< HEAD
 			public async Task<People> SearchAsync(string query, bool includeAdult, int page, CancellationToken cancellationToken)
 			{
 				var parameters = new Dictionary<string, object> { { "query", query }, { "page", page }, { "include_adult", includeAdult } };
+=======
+			public async Task<People> SearchAsync(string query, bool includeAdult, bool autocomplete, int page, CancellationToken cancellationToken)
+			{
+				var parameters = new Dictionary<string, object> { { "query", query }, { "page", page }, { "include_adult", includeAdult } };
+				if (autocomplete) parameters.Add("search_type", "ngram");
+				
+>>>>>>> miguelhasse/master
 				var response = await client.GetAsync("search/person", parameters, cancellationToken).ConfigureAwait(false);
 				return await Deserialize<People>(response);
 			}

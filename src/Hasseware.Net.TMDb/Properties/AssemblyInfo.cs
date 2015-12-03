@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
@@ -7,7 +6,7 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle("Hasseware.Net.TheMovieDB")]
 [assembly: AssemblyDescription("Client library for The Movie Database service")]
-[assembly: AssemblyProduct("Hasseware.Net.TheMovieDB")]
+[assembly: AssemblyProduct("The Movie Database .NET Client")]
 [assembly: AssemblyCopyright("Copyright © 2014 Miguel Hasse de Oliveira")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +31,10 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
+<<<<<<< HEAD
 [assembly: AssemblyVersion("1.2.6.0")]
 [assembly: AssemblyFileVersion("1.2.6.0")]
+=======
+[assembly: AssemblyVersion("1.2.7.0")]
+[assembly: AssemblyFileVersion("1.2.7.0")]
+>>>>>>> miguelhasse/master

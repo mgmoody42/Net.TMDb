@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+<<<<<<< HEAD
 using System.IO;
+=======
+>>>>>>> miguelhasse/master
 using System.Runtime.Serialization;
 
 #pragma warning disable 1591
